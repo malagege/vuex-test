@@ -14,10 +14,12 @@
     Edit
     <code>components/HelloWorld.vue</code> to test hot module replacement.
   </p>
+  <Demo1></Demo1>
 </template>
 
 <script setup>
 import { defineProps, reactive } from 'vue'
+import Demo1 from './Demo1.vue'
 
 defineProps({
   msg: String
