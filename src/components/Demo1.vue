@@ -17,6 +17,8 @@ export default {
             console.log('--- demo1 實作結束---')
         }
     },
-    computed:mapState(['count'])
+    computed:mapState({
+        count: state=>state.count,
+    })
 }
 </script>
