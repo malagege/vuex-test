@@ -1,7 +1,10 @@
 <template>
-    Demo1
+    Demo1<br>
+    {{ count }}
 </template>
 <script>
+import { mapState } from 'vuex'
+
 export default {
     created(){
         this.increment();
@@ -13,6 +16,7 @@ export default {
             console.log(this.$store.state.count)
             console.log('--- demo1 實作結束---')
         }
-    }
+    },
+    computed:mapState(['count'])
 }
 </script>
