@@ -7,7 +7,11 @@ import { mapState } from 'vuex'
 
 export default {
     created(){
+        console.log(mapState({count:state=>state.count}))
         this.increment();
+        console.log('start')
+        console.log(this.count)
+        console.log('end')
     },
     methods: {
         increment() {
@@ -17,8 +21,10 @@ export default {
             console.log('--- demo1 實作結束---')
         }
     },
-    computed:mapState({
+    computed:{
+        ...mapState({
         count: state=>state.count,
     })
+    }
 }
 </script>
