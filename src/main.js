@@ -1,16 +1,15 @@
 import { createApp } from 'vue'
 import { createStore } from 'vuex'
 import App from './App.vue'
+import { SOME_MUTATION } from './mutation-types'
 
 // 創建一個新的 store 實例
 const store = createStore({
-  state: {
-    count: 1
-  },
+  state: { count:0 },
   mutations: {
-    increment (state, payload) {
-      // 变更状态
-      state.count += payload.amount
+    // 我們可以使用 ES2015 風格的計算屬性命名功能來使用一個常量作為函數名
+    [SOME_MUTATION] (state) {
+      state.count += 1
     }
   }
 })
@@ -22,8 +21,7 @@ createApp(App).use(store).mount('#app')
 
 
 store.commit({
-  type: 'increment',
-  amount: 10
+  type: SOME_MUTATION
 })
 
 console.log('store.state.count:' + store.state.count)
