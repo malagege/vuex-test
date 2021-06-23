@@ -8,9 +8,9 @@ const store = createStore({
     count: 1
   },
   mutations: {
-    increment (state, n) {
+    increment (state, payload) {
       // 变更状态
-      state.count += n
+      state.count += payload.amount
     }
   }
 })
@@ -21,6 +21,6 @@ const store = createStore({
 createApp(App).use(store).mount('#app')
 
 
-store.commit('increment', 1 )
+store.commit('increment', { amount:10 } )
 
 console.log('store.state.count:' + store.state.count)
