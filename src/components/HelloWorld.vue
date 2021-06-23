@@ -14,7 +14,6 @@
     Edit
     <code>components/HelloWorld.vue</code> to test hot module replacement.
   </p>
-  <Demo1></Demo1>
 </template>
 
 <script setup>
