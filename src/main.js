@@ -21,6 +21,9 @@ const store = createStore({
 createApp(App).use(store).mount('#app')
 
 
-store.commit('increment', { amount:10 } )
+store.commit({
+  type: 'increment',
+  amount: 10
+})
 
 console.log('store.state.count:' + store.state.count)
