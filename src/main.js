@@ -6,17 +6,20 @@ import { SOME_MUTATION } from './mutation-types'
 // 創建一個新的 store 實例
 const store = createStore({
   state: {
-      name: '張三',
-      number: 0,
+    count: 0
   },
   mutations: {
-      setNumberIsWhat(state, payload) {
-          setTimeout(() => {
-            state.number = payload.number;
-          }, 1000);
-      },
+    increment (state) {
+      state.count++
+    }
+  },
+  actions: {
+    increment (context) {
+      context.commit('increment')
+    }
   }
-});
+})
+
 
   
 // 將 store 實例作為插件安裝
@@ -24,11 +27,9 @@ const store = createStore({
 createApp(App).use(store).mount('#app')
 
 
-console.log(`舊值：${store.state.number}`);
+console.log(`舊值：${store.state.count}`);
 
-store.commit('setNumberIsWhat',{
-  number: 20
-})
+store.dispatch('increment')
 
 // await store.dispatch('setNum');
-console.log(`新值：${store.state.number}`);
+console.log(`新值：${store.state.count}`);
