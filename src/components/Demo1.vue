@@ -3,28 +3,26 @@
     {{ count }}
 </template>
 <script>
-import { mapState } from 'vuex'
+import { mapActions } from 'vuex'
+
 
 export default {
     created(){
-        console.log(mapState({count:state=>state.count}))
-        this.increment();
-        console.log('start')
-        console.log(this.count)
-        console.log('end')
+        console.log('actionA Start -------')
+        this.actionA({test:'helloword'})
+        console.log('actionA Finished -------')
+
+        console.log('actionB Start -------')
+        this.actionB()
+        console.log('actionB Finished -------')
     },
     methods: {
-        increment() {
-            console.log('--- demo1 實作開始---')
-            this.$store.commit('increment')
-            console.log(this.$store.state.count)
-            console.log('--- demo1 實作結束---')
-        }
-    },
-    computed:{
-        ...mapState({
-        count: state=>state.count,
-    })
+        ...mapActions(['actionA','actionB']),
+        // async getData(){
+        //     await timeout(3000)
+        //     return 1
+        // }, // 外部引用看來吃不到
+
     }
 }
 </script>
