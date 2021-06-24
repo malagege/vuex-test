@@ -9,13 +9,17 @@ const store = createStore({
     count: 0
   },
   mutations: {
-    increment (state) {
-      state.count++
+    increment (state,{amount}) {
+      state.count += amount
     }
   },
   actions: {
-    increment (context) {
-      context.commit('increment')
+    incrementAsync ({ commit, state },payload) { 
+      console.log('payload',payload)
+      setTimeout(() => {
+        commit('increment',payload)
+        console.log('count result:' + state.count )
+      }, 1000)
     }
   }
 })
@@ -27,9 +31,22 @@ const store = createStore({
 createApp(App).use(store).mount('#app')
 
 
-console.log(`舊值：${store.state.count}`);
+console.log(`舊值：${store.state.count}`)
 
-store.dispatch('increment')
+store.dispatch('incrementAsync', {
+  amount: 10
+})
+
+// await store.dispatch('setNum')
+console.log(`新值：${store.state.count}`)
+
+console.log('-----------')
+
+console.log(`舊值：${store.state.count}`)
+
+store.dispatch('incrementAsync', {
+  amount: 10
+})
 
 // await store.dispatch('setNum');
-console.log(`新值：${store.state.count}`);
+console.log(`新值：${store.state.count}`)
